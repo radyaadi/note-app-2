@@ -5,13 +5,13 @@ import { AuthedProvider } from './context/AuthedContext';
 import { LocaleProvider } from './context/LocaleContext';
 import { putAccessToken, getUserLogged } from './util/api';
 import useTheme from './hook/useTheme';
-import HeaderBar from './component/HeaderBar';
 import LoginPage from './page/LoginPage';
 import RegisterPage from './page/RegisterPage';
 import NotePage from './page/NotePage';
 import AddNotePage from './page/AddNotePage';
 import DetailNotePage from './page/DetailNotePage';
 import ArchiveNotePage from './page/ArchiveNotePage';
+import HeaderBar from './component/HeaderBar';
 
 const NoteApp = () => {
   const [authedUser, setAuthedUser] = useState(null);

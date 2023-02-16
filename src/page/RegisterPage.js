@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LocaleContext from '../context/LocaleContext';
 import { register } from '../util/api';
@@ -11,7 +11,7 @@ const RegisterPage = () => {
   const [password, onPasswordChange] = useInput('');
   const [confirmPassword, onConfirmPasswordChange] = useInput('');
 
-  const { locale } = React.useContext(LocaleContext);
+  const { locale } = useContext(LocaleContext);
 
   const onRegisterHandler = (event) => {
     event.preventDefault();

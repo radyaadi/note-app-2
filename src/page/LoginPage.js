@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../util/api';
 import LocaleContext from '../context/LocaleContext';
@@ -9,7 +9,7 @@ const LoginPage = ({ loginSuccess }) => {
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
 
-  const { locale } = React.useContext(LocaleContext);
+  const { locale } = useContext(LocaleContext);
 
   const onSubmitLoginForm = async (event) => {
     event.preventDefault();

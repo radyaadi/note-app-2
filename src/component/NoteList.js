@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import LocaleContext from '../context/LocaleContext';
 import NoteItem from './NoteItem';
 import PropTypes from 'prop-types';
 
 const NoteList = ({ notes }) => {
+  const { locale } = useContext(LocaleContext);
+
   if (!notes.length) {
     return (
       <section className="notes-list-empty">
-        <p className="notes-list__empty">no note available</p>
+        <p className="notes-list__empty">
+          {locale === 'id' ? 'Catatan tidak tersedia' : 'No note available'}
+        </p>
       </section>
     );
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiCheck } from 'react-icons/fi';
 import useInput from '../hook/useInput';
@@ -10,7 +10,7 @@ function AddPage() {
   const [body, onBodyChange] = useInput('');
   const navigate = useNavigate();
 
-  const { locale } = React.useContext(LocaleContext);
+  const { locale } = useContext(LocaleContext);
 
   const onAddNoteHandler = () => {
     addNote({ title, body }).then((res) => {

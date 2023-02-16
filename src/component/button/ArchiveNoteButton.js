@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FiDownload, FiUpload } from 'react-icons/fi';
 
-function ArchiveNoteButton({ id, onArchive, isArchived }) {
+const ArchiveNoteButton = ({ id, onArchive, isArchived }) => {
   return (
     <button
       className="action"
@@ -12,7 +12,7 @@ function ArchiveNoteButton({ id, onArchive, isArchived }) {
       {isArchived ? <FiUpload /> : <FiDownload />}
     </button>
   );
-}
+};
 
 ArchiveNoteButton.propTypes = {
   id: PropTypes.string.isRequired,

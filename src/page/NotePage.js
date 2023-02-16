@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getActiveNotes } from '../util/api';
 import LocaleContext from '../context/LocaleContext';
@@ -14,7 +14,7 @@ const NotePage = () => {
     return searchParams.get('keyword') || '';
   });
 
-  const { locale } = React.useContext(LocaleContext);
+  const { locale } = useContext(LocaleContext);
 
   useEffect(() => {
     getActiveNotes().then((res) => {

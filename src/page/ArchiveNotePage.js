@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getArchivedNotes } from '../util/api';
 import LocaleContext from '../context/LocaleContext';
@@ -13,7 +13,7 @@ const ArchiveNotePage = () => {
     return searchParams.get('keyword') || '';
   });
 
-  const { locale } = React.useContext(LocaleContext);
+  const { locale } = useContext(LocaleContext);
 
   useEffect(() => {
     getArchivedNotes().then((res) => {
@@ -41,7 +41,7 @@ const ArchiveNotePage = () => {
     'Loading...'
   ) : (
     <section className="homepage">
-      <h2>{locale === 'id' ? 'Catatan Aktif' : 'Active Note'}</h2>
+      <h2>{locale === 'id' ? 'Catatan Terarsip' : 'Archived Note'}</h2>
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       {loading === true ? 'Loading...' : <NoteList notes={filteredNote} />}
     </section>
