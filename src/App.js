@@ -64,6 +64,14 @@ const NoteApp = () => {
     if (localStorage.locale && ['id', 'en'].includes(localStorage.locale)) {
       setLocale(localStorage.locale);
     }
+
+    if (localStorage.theme) {
+      changeTheme(localStorage.theme);
+    } else {
+      localStorage.setItem('theme', 'dark');
+      changeTheme('dark');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onLoginSuccess = async ({ accessToken }) => {
