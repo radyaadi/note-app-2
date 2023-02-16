@@ -1,11 +1,13 @@
-const showFormattedDate = (date) => {
+const showFormattedDate = (date, locale) => {
   const options = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
-  return new Date(date).toLocaleDateString('en-US', options);
+  return locale === 'id'
+    ? new Date(date).toLocaleDateString('id-ID', options)
+    : new Date(date).toLocaleDateString('en-US', options);
 };
 
 export { showFormattedDate };

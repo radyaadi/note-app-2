@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import LocaleContext from '../context/LocaleContext';
 import { showFormattedDate } from '../util/dateFormatter';
 import DeleteNoteButton from './button/DeleteNoteButton';
 import ArchiveNoteButton from './button/ArchiveNoteButton';
@@ -13,10 +14,14 @@ const NoteDetail = ({
   onArchive,
   onDelete,
 }) => {
+  const { locale } = useContext(LocaleContext);
+
   return (
     <>
       <h3 className="detail-page__title">{title}</h3>
-      <p className="detail-page__createdAt">{showFormattedDate(createdAt)}</p>
+      <p className="detail-page__createdAt">
+        {showFormattedDate(createdAt, locale)}
+      </p>
       <div className="detail-page__body">{body}</div>
       <div className="detail-page__action">
         <DeleteNoteButton id={id} onDelete={onDelete} />

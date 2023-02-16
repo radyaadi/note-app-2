@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getActiveNotes } from '../util/api';
+import LocaleContext from '../context/LocaleContext';
 import NoteList from '../component/NoteList';
 import SearchBar from '../component/SearchBar';
 import AddNoteButton from '../component/button/AddNoteButton';
@@ -12,6 +13,8 @@ const NotePage = () => {
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get('keyword') || '';
   });
+
+  const { locale } = React.useContext(LocaleContext);
 
   useEffect(() => {
     getActiveNotes().then((res) => {
@@ -39,7 +42,7 @@ const NotePage = () => {
     'Loading...'
   ) : (
     <section className="homepage">
-      <h2>Active Note</h2>
+      <h2>{locale === 'id' ? 'Catatan Aktif' : 'Active Note'}</h2>
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       {loading === true ? 'Loading...' : <NoteList notes={filteredNote} />}
       <AddNoteButton />

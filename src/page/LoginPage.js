@@ -43,7 +43,10 @@ const LoginPage = ({ loginSuccess }) => {
         </form>
       </div>
       <p>
-        Belum Punya Akun ? <Link to="/register">Register Disini</Link>
+        {locale === 'id' ? 'Belum Punya Akun ? ' : `Don't have an account ? `}
+        <Link to="/register">
+          {locale === 'id' ? 'Register Disini' : 'Register Here'}
+        </Link>
       </p>
     </section>
   );

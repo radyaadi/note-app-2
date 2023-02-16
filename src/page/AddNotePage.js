@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { FiCheck } from 'react-icons/fi';
 import useInput from '../hook/useInput';
 import { addNote } from '../util/api';
+import LocaleContext from '../context/LocaleContext';
 
 function AddPage() {
   const [title, onTitleChange] = useInput('');
   const [body, onBodyChange] = useInput('');
   const navigate = useNavigate();
+
+  const { locale } = React.useContext(LocaleContext);
 
   const onAddNoteHandler = () => {
     addNote({ title, body }).then((res) => {
@@ -23,13 +26,21 @@ function AddPage() {
         <input
           type="text"
           className="add-new-page__input__title"
-          placeholder="Add your title here"
+          placeholder={
+            locale === 'id'
+              ? 'Tuliskan judul catatan disini'
+              : 'Type note title here'
+          }
           value={title}
           onChange={onTitleChange}
         />
         <textarea
           className="add-new-page__input__body"
-          placeholder="Add your note here"
+          placeholder={
+            locale === 'id'
+              ? 'Tuliskan isi catatan disini'
+              : 'Type note text here'
+          }
           value={body}
           onInput={onBodyChange}
         />
