@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useInput from '../hook/useInput';
 import { register } from '../util/api';
+import useInput from '../hook/useInput';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -12,12 +12,13 @@ const RegisterPage = () => {
 
   const onRegisterHandler = (event) => {
     event.preventDefault();
+
     if (password !== confirmPassword) {
       alert('Your Password must be same as Confirm Password');
     } else {
       register({ name, email, password }).then((res) => {
         if (!res.error) {
-          navigate('/login');
+          navigate('/');
         }
       });
     }
@@ -46,7 +47,7 @@ const RegisterPage = () => {
           />
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
-            type="confirmPassword"
+            type="password"
             id="confirmPassword"
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
@@ -55,7 +56,7 @@ const RegisterPage = () => {
         </form>
       </div>
       <p>
-        Sudah Punya Akun ? <Link to="/login">Login Disini</Link>
+        Sudah Punya Akun ? <Link to="/">Login Disini</Link>
       </p>
     </section>
   );

@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getActiveNotes } from '../util/api';
 import NoteList from '../component/NoteList';
 import SearchBar from '../component/SearchBar';
+import AddNoteButton from '../component/button/AddNoteButton';
 
 const NotePage = () => {
   const [notes, setNotes] = useState([]);
@@ -41,6 +42,7 @@ const NotePage = () => {
       <h2>Active Note</h2>
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       {loading === true ? 'Loading...' : <NoteList notes={filteredNote} />}
+      <AddNoteButton />
     </section>
   );
 };

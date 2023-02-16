@@ -1,39 +1,28 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ThemeContext from '../context/ThemeContext';
+import LogoutButton from './button/LogoutButton';
+import AuthedContext from '../context/AuthedContext';
+import PropTypes from 'prop-types';
 
-const Navigation = ({ logout, authed }) => {
-  const { theme, changeTheme } = useContext(ThemeContext);
+const Navigation = ({ logout }) => {
+  const { authedUser } = useContext(AuthedContext);
+
   return (
-    <header>
-      <h1>
-        <a href="/">Aplikasi Catatan</a>
-      </h1>
+    <>
       <nav className="navigation">
         <ul>
           <li>
-            <button className="toggle-locale" type="button">
-              a
-            </button>
-          </li>
-          <li>
-            <button
-              className="toggle-theme"
-              type="button"
-              onClick={() => changeTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? 'dark' : 'light'}
-            </button>
-          </li>
-          <li>
-            <Link to="/" onClick={logout}>
-              Si Logout
-            </Link>
+            <Link to="/archives">Archive</Link>
           </li>
         </ul>
       </nav>
-    </header>
+      <LogoutButton logout={logout} user={authedUser.name} />
+    </>
   );
+};
+
+Navigation.propTypes = {
+  logout: PropTypes.func.isRequired,
 };
 
 export default Navigation;
